@@ -5,45 +5,143 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{{ page.title }} · 求职准备中心</title>
 <style>
-  :root{--accent:#1e4e7c;--bg:#f6f8fa;--card:#ffffff;--line:#d0d7de;--text:#1f2328;--muted:#57606a}
+  :root{--accent:#1e4e7c;--accent2:#2d6da3;--bg:#f6f8fa;--card:#fff;--line:#d0d7de;--text:#1f2328;--muted:#57606a}
   *{box-sizing:border-box}
   body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;margin:0;background:var(--bg);color:var(--text);line-height:1.8;font-size:15.5px}
-  .wrap{max-width:760px;margin:0 auto;padding:14px 16px 56px}
-  .topnav{position:sticky;top:0;z-index:9;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:10px 12px;display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch}
-  .topnav a{flex:0 0 auto;font-size:13.5px;padding:6px 13px;border-radius:18px;background:#eef1f4;color:var(--text);text-decoration:none;white-space:nowrap}
-  .topnav a.home{background:var(--accent);color:#fff;font-weight:600}
-  h1{font-size:22px;line-height:1.4;margin:20px 0 10px}
+  /* ── 顶栏 ── */
+  .topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:8px 12px}
+  .menu-btn{flex:0 0 auto;border:1px solid var(--line);background:var(--accent);color:#fff;font-size:13.5px;font-weight:600;padding:7px 13px;border-radius:9px;cursor:pointer}
+  .crumbs{flex:1;min-width:0;display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);overflow:hidden;white-space:nowrap}
+  .crumbs a{color:var(--accent);text-decoration:none;flex:0 0 auto}
+  .crumbs .here{font-weight:700;color:var(--text);overflow:hidden;text-overflow:ellipsis}
+  .pn-top{flex:0 0 auto;display:flex;gap:6px}
+  .pn-top a{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--accent);text-decoration:none;font-size:18px;font-weight:700}
+  .pn-top a.off{opacity:.3;pointer-events:none}
+  /* ── 抽屉 ── */
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);opacity:0;pointer-events:none;transition:.2s;z-index:90}
+  .drawer{position:fixed;top:0;left:0;bottom:0;width:min(320px,86vw);background:#fff;z-index:95;transform:translateX(-102%);transition:.22s;overflow-y:auto;padding:14px 0 30px;box-shadow:2px 0 18px rgba(0,0,0,.12)}
+  body.nav-open .overlay{opacity:1;pointer-events:auto}
+  body.nav-open .drawer{transform:none}
+  .drawer h3{font-size:13px;color:var(--muted);margin:18px 16px 6px;font-weight:600}
+  .drawer a{display:block;padding:10px 16px;font-size:14.5px;color:var(--text);text-decoration:none;border-left:3px solid transparent}
+  .drawer a:hover{background:#f0f4f8}
+  .drawer a.cur{background:#e8f0f8;border-left-color:var(--accent);color:var(--accent);font-weight:700}
+  .drawer .home-link{margin:6px 16px 0;display:block;text-align:center;background:var(--accent);color:#fff;font-weight:700;border-radius:9px;padding:10px;border-left:none}
+  /* ── 正文 ── */
+  .wrap{max-width:760px;margin:0 auto;padding:16px 16px 30px}
+  h1{font-size:22px;line-height:1.4;margin:14px 0 10px}
   h2{font-size:18.5px;margin:26px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--accent)}
   h3{font-size:16.5px;margin:20px 0 8px}
-  p{margin:10px 0}
-  table{border-collapse:collapse;width:100%;font-size:13.5px;display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:normal}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
   th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
   th{background:#eef1f4;font-weight:600}
   blockquote{margin:14px 0;padding:10px 16px;border-left:4px solid var(--accent);background:var(--card);border-radius:0 8px 8px 0;color:#333}
-  blockquote p{margin:6px 0}
   code{font-size:13px;background:#eef1f4;padding:1px 5px;border-radius:4px}
   pre{font-size:12.5px;background:#0d1117;color:#e6edf3;padding:12px;border-radius:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;line-height:1.5}
   pre code{background:none;color:inherit;padding:0}
-  ul,ol{padding-left:22px}
-  li{margin:5px 0}
+  ul,ol{padding-left:22px} li{margin:5px 0}
   hr{border:none;border-top:1px solid var(--line);margin:26px 0}
   a{color:var(--accent)}
-  .foot{margin-top:40px;text-align:center;color:var(--muted);font-size:12.5px}
+  /* ── 底部翻页 ── */
+  .pn-bottom{max-width:760px;margin:0 auto 40px;padding:0 16px;display:flex;gap:10px}
+  .pn-bottom a{flex:1;display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 14px;text-decoration:none;color:var(--text);min-width:0}
+  .pn-bottom a.off{visibility:hidden}
+  .pn-bottom .dir{font-size:11.5px;color:var(--muted)}
+  .pn-bottom .t{font-size:14px;font-weight:700;color:var(--accent);line-height:1.4}
+  .pn-bottom .next{text-align:right}
+  /* ── 回顶部 ── */
+  #toTop{position:fixed;right:16px;bottom:18px;z-index:60;width:42px;height:42px;border-radius:50%;border:none;background:var(--accent);color:#fff;font-size:18px;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.25);display:none}
 </style>
 </head>
 <body>
-<nav class="topnav">
-  <a class="home" href="{{ site.baseurl }}/">🏠 目录</a>
-  <a href="{{ site.baseurl }}/简智机器人/05-面试准备手册.html">🎯 面试手册</a>
-  <a href="{{ site.baseurl }}/简智机器人/07-模拟项目沙盘.html">📋 项目沙盘</a>
-  <a href="{{ site.baseurl }}/简智机器人/06-交付物与客户训练详解.html">📦 交付物</a>
-  <a href="{{ site.baseurl }}/简智机器人/02-产品与平台详解.html">🔧 产品平台</a>
-  <a href="{{ site.baseurl }}/简智机器人/03-数据流水线详解.html">🏭 流水线</a>
-  <a href="{{ site.baseurl }}/简智机器人/04-资深交付经理岗位详解.html">💼 岗位详解</a>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn">☰ 目录</button>
+  <div class="crumbs"><a href="{{ site.baseurl }}/">🏠 首页</a><span>›</span><span id="crumbCat"></span><span>›</span><span class="here">{{ page.title }}</span></div>
+  <div class="pn-top"><a id="prevTop" title="上一篇">‹</a><a id="nextTop" title="下一篇">›</a></div>
+</header>
+
+<div class="overlay" id="overlay"></div>
+<nav class="drawer" id="drawer">
+  <a class="home-link" href="{{ site.baseurl }}/">🏠 返回目录首页</a>
+  <h3>🎯 冲刺区(考前)</h3>
+  <a href="{{ site.baseurl }}/简智机器人/10-模拟面试复盘·修正答案.html">10 · 模拟面试复盘·修正答案</a>
+  <a href="{{ site.baseurl }}/简智机器人/05-面试准备手册.html">05 · 面试准备手册</a>
+  <a href="{{ site.baseurl }}/简智机器人/07-模拟项目沙盘.html">07 · 模拟项目沙盘</a>
+  <a href="{{ site.baseurl }}/简智机器人/04-资深交付经理岗位详解.html">04 · 资深交付经理岗位详解</a>
+  <h3>🏭 业务与流水线</h3>
+  <a href="{{ site.baseurl }}/简智机器人/01-公司与业务.html">01 · 公司与业务</a>
+  <a href="{{ site.baseurl }}/简智机器人/02-产品与平台详解.html">02 · 产品与平台详解</a>
+  <a href="{{ site.baseurl }}/简智机器人/03-数据流水线详解.html">03 · 数据流水线详解</a>
+  <a href="{{ site.baseurl }}/简智机器人/06-交付物与客户训练详解.html">06 · 交付物与客户训练详解</a>
+  <a href="{{ site.baseurl }}/简智机器人/08-客户与需求图谱.html">08 · 客户与需求图谱</a>
+  <a href="{{ site.baseurl }}/简智机器人/09-核心概念串讲.html">09 · 核心概念串讲</a>
+  <h3>📚 附录与其他</h3>
+  <a href="{{ site.baseurl }}/README.html">总览 · README</a>
+  <a href="{{ site.baseurl }}/智谱/01-ToB交付深调研.html">智谱 · ToB 交付深调研</a>
+  <a href="{{ site.baseurl }}/通用/行业通识与面试储备.html">通用 · 行业通识与面试储备</a>
+  <a href="{{ site.baseurl }}/简智机器人/98-附录-面试认知准备(旧版).html">附录 · 面试认知准备(旧版)</a>
+  <a href="{{ site.baseurl }}/简智机器人/99-附录-客户项目经理岗(旧版).html">附录 · 客户项目经理岗(旧版)</a>
 </nav>
+
 <div class="wrap">
 {{ content }}
-<div class="foot">赵腾飞 · 求职准备中心 · 手机版站点(GitHub Pages)</div>
 </div>
+
+<nav class="pn-bottom" id="pnBottom"></nav>
+<button id="toTop" title="回到顶部">↑</button>
+
+<script>
+const PAGES = [
+ {u:"/job-prep/简智机器人/01-公司与业务.html", t:"01 · 公司与业务", c:"业务认知"},
+ {u:"/job-prep/简智机器人/02-产品与平台详解.html", t:"02 · 产品与平台详解", c:"业务认知"},
+ {u:"/job-prep/简智机器人/03-数据流水线详解.html", t:"03 · 数据流水线详解", c:"业务认知"},
+ {u:"/job-prep/简智机器人/04-资深交付经理岗位详解.html", t:"04 · 资深交付经理岗位详解", c:"冲刺区"},
+ {u:"/job-prep/简智机器人/05-面试准备手册.html", t:"05 · 面试准备手册", c:"冲刺区"},
+ {u:"/job-prep/简智机器人/06-交付物与客户训练详解.html", t:"06 · 交付物与客户训练详解", c:"业务认知"},
+ {u:"/job-prep/简智机器人/07-模拟项目沙盘.html", t:"07 · 模拟项目沙盘", c:"冲刺区"},
+ {u:"/job-prep/简智机器人/08-客户与需求图谱.html", t:"08 · 客户与需求图谱", c:"业务认知"},
+ {u:"/job-prep/简智机器人/09-核心概念串讲.html", t:"09 · 核心概念串讲", c:"业务认知"},
+ {u:"/job-prep/简智机器人/10-模拟面试复盘·修正答案.html", t:"10 · 模拟面试复盘·修正答案", c:"冲刺区"},
+ {u:"/job-prep/简智机器人/98-附录-面试认知准备(旧版).html", t:"附录 · 面试认知准备(旧版)", c:"附录"},
+ {u:"/job-prep/简智机器人/99-附录-客户项目经理岗(旧版).html", t:"附录 · 客户项目经理岗(旧版)", c:"附录"},
+ {u:"/job-prep/智谱/01-ToB交付深调研.html", t:"智谱 · ToB 交付深调研", c:"附录"},
+ {u:"/job-prep/通用/行业通识与面试储备.html", t:"通用 · 行业通识与面试储备", c:"附录"},
+ {u:"/job-prep/README.html", t:"总览 · README", c:"附录"}
+];
+const curPath = decodeURIComponent(location.pathname);
+const idx = PAGES.findIndex(p => p.u === curPath);
+/* 面包屑分类 */
+if (idx >= 0) document.getElementById('crumbCat').textContent = PAGES[idx].c;
+/* 抽屉高亮当前页 */
+document.querySelectorAll('#drawer a').forEach(a => {
+  if (decodeURIComponent(a.getAttribute('href')) === curPath) a.classList.add('cur');
+});
+/* 上一篇/下一篇:顶部箭头 + 底部卡片 */
+function setPn(el, p, dir){
+  if (!p){ el.classList.add('off'); if(el.id==='prevTop'||el.id==='nextTop') el.removeAttribute('href'); return; }
+  el.href = p.u;
+  if (el.classList.contains('pn-card')){
+    el.innerHTML = '<div class="dir">'+dir+'</div><div class="t">'+p.t+'</div>';
+  }
+}
+const prev = idx > 0 ? PAGES[idx-1] : null;
+const next = idx >= 0 && idx < PAGES.length-1 ? PAGES[idx+1] : null;
+const pt = document.getElementById('prevTop'), nt = document.getElementById('nextTop');
+if (prev) pt.href = prev.u; else pt.classList.add('off');
+if (next) nt.href = next.u; else nt.classList.add('off');
+const bottom = document.getElementById('pnBottom');
+bottom.innerHTML = '<a id="pnPrev" class="pn-card"></a><a id="pnNext" class="pn-card next"></a>';
+setPn(document.getElementById('pnPrev'), prev, '← 上一篇');
+setPn(document.getElementById('pnNext'), next, '下一篇 →');
+/* 抽屉开关 */
+const body = document.body;
+document.getElementById('menuBtn').onclick = () => body.classList.add('nav-open');
+document.getElementById('overlay').onclick = () => body.classList.remove('nav-open');
+document.addEventListener('keydown', e => { if (e.key === 'Escape') body.classList.remove('nav-open'); });
+/* 回顶部 */
+const toTop = document.getElementById('toTop');
+window.addEventListener('scroll', () => { toTop.style.display = window.scrollY > 600 ? 'block' : 'none'; });
+toTop.onclick = () => window.scrollTo({top:0, behavior:'smooth'});
+</script>
 </body>
 </html>

@@ -5,25 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>赵腾飞 · 求职准备中心</title>
 <style>
-  :root{--accent:#1e4e7c;--bg:#f6f8fa;--card:#ffffff;--line:#d0d7de;--text:#1f2328;--muted:#57606a}
+  :root{--accent:#1e4e7c;--accent2:#2d6da3;--bg:#f6f8fa;--card:#fff;--line:#d0d7de;--text:#1f2328;--muted:#57606a}
   *{box-sizing:border-box}
   body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;margin:0;background:var(--bg);color:var(--text);line-height:1.7;font-size:15.5px}
-  .hero{background:linear-gradient(135deg,#1e4e7c 0%,#2d6da3 100%);color:#fff;padding:34px 18px 26px;text-align:center}
+  .hero{background:linear-gradient(135deg,#1e4e7c 0%,#2d6da3 100%);color:#fff;padding:30px 18px 24px;text-align:center}
   .hero h1{margin:0 0 8px;font-size:24px;letter-spacing:1px}
   .hero p{margin:4px 0;opacity:.92;font-size:14px}
   .badge{display:inline-block;margin-top:10px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.45);padding:5px 14px;border-radius:16px;font-size:13.5px;font-weight:600}
-  .tabs{display:flex;gap:6px;padding:14px 12px 0;max-width:760px;margin:0 auto}
+  .hint{max-width:760px;margin:14px auto 0;padding:0 16px;font-size:12.5px;color:var(--muted);text-align:center}
+  .tabs{display:flex;gap:6px;padding:12px 12px 0;max-width:760px;margin:0 auto;position:sticky;top:0;background:var(--bg);z-index:10;padding-bottom:8px}
   .tab-btn{flex:1;border:1px solid var(--line);background:#fff;color:var(--text);font-size:14px;font-weight:600;padding:10px 4px;border-radius:10px;cursor:pointer;transition:.15s}
   .tab-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
   .panel{max-width:760px;margin:12px auto 0;padding:0 12px;display:none}
   .panel.active{display:block}
-  .card{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:12px;text-decoration:none;color:var(--text);transition:.15s}
+  .card{display:flex;align-items:flex-start;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin-bottom:12px;text-decoration:none;color:var(--text);transition:.15s}
+  .card:hover{border-color:var(--accent2)}
   .card:active{background:#f0f4f8}
-  .card .t{font-weight:700;font-size:15.5px;color:var(--accent)}
-  .card .d{font-size:13px;color:var(--muted);margin-top:4px;line-height:1.6}
-  .card .tag{float:right;font-size:11px;color:#fff;background:var(--accent);border-radius:10px;padding:2px 9px;font-weight:400}
-  .card .tag.warn{background:#b35900}
-  .note{max-width:760px;margin:18px auto 0;padding:0 16px;font-size:12.5px;color:var(--muted);text-align:center}
+  .num{flex:0 0 auto;width:38px;height:38px;border-radius:10px;background:#e8f0f8;color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px}
+  .num.hot{background:var(--accent);color:#fff}
+  .card .body{flex:1;min-width:0}
+  .card .t{font-weight:700;font-size:15.5px;color:var(--accent);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .card .d{font-size:13px;color:var(--muted);margin-top:3px;line-height:1.6}
+  .tag{font-size:10.5px;color:#fff;background:#b35900;border-radius:9px;padding:2px 8px;font-weight:400}
   .foot{max-width:760px;margin:26px auto 40px;padding:0 16px;text-align:center;color:var(--muted);font-size:12px}
 </style>
 </head>
@@ -34,99 +37,114 @@
   <span class="badge">🎯 面试:周一上午 11:00</span>
 </div>
 
+<div class="hint">编号即阅读顺序 01 → 10 · 点 ☰ 或卡片进入文章后,每页顶部有全站目录和翻页,底部有上一篇/下一篇</div>
+
 <div class="tabs" role="tablist">
-  <button class="tab-btn active" data-panel="p1">🎯 面试冲刺</button>
+  <button class="tab-btn active" data-panel="p1">🎯 冲刺区</button>
   <button class="tab-btn" data-panel="p2">🏭 业务认知</button>
   <button class="tab-btn" data-panel="p3">📚 附录·其他</button>
 </div>
 
 <div id="p1" class="panel active">
   <a class="card" href="/job-prep/简智机器人/10-模拟面试复盘·修正答案.html">
-    <span class="tag warn">考前必看</span>
-    <div class="t">10 · 模拟面试复盘·修正答案</div>
-    <div class="d">7 道真题:你的回答哪里好/哪里丢分 + 合并修正后的最终版(你的口吻,直接背) + 明早清单</div>
+    <span class="num hot">10</span>
+    <span class="body"><span class="t">模拟面试复盘·修正答案 <span class="tag">考前必看</span></span>
+    <span class="d">7 道真题:你的回答哪里好/哪里丢分 + 合并修正后的最终版(你的口吻,直接背) + 明早清单</span></span>
   </a>
   <a class="card" href="/job-prep/简智机器人/05-面试准备手册.html">
-    <span class="tag warn">考前一晚</span>
-    <div class="t">05 · 面试准备手册</div>
-    <div class="d">30 秒事实卡 · 核心叙事 · 术语表(听懂黑话)· Q&amp;A 应答 · 反问清单 · 面试前检查清单</div>
+    <span class="num hot">05</span>
+    <span class="body"><span class="t">面试准备手册 <span class="tag">考前一晚</span></span>
+    <span class="d">30 秒事实卡 · 核心叙事 · 术语表(听懂黑话)· Q&amp;A 应答 · 反问清单 · 面试前检查清单</span></span>
   </a>
   <a class="card" href="/job-prep/简智机器人/07-模拟项目沙盘.html">
-    <span class="tag">面试案例</span>
-    <div class="t">07 · 模拟项目沙盘</div>
-    <div class="d">一个虚构的 2000 小时数据交付项目走完全流程——每阶段你的动作、输出物、常见坑,可直接当面试案例讲</div>
+    <span class="num">07</span>
+    <span class="body"><span class="t">模拟项目沙盘 <span class="tag">面试案例</span></span>
+    <span class="d">一个虚构的 2000 小时数据交付项目走完全流程——每阶段你的动作、输出物、常见坑,可直接当面试案例讲</span></span>
   </a>
   <a class="card" href="/job-prep/简智机器人/04-资深交付经理岗位详解.html">
-    <span class="tag">岗位本体</span>
-    <div class="t">04 · 资深交付经理岗位详解</div>
-    <div class="d">JD 逐条拆解 · 岗位的一天 · 简历映射与 gap 应对话术 · 入职 90 天计划</div>
+    <span class="num">04</span>
+    <span class="body"><span class="t">资深交付经理岗位详解 <span class="tag">岗位本体</span></span>
+    <span class="d">JD 逐条拆解 · 岗位的一天 · 简历映射与 gap 应对话术 · 入职 90 天计划</span></span>
   </a>
 </div>
 
 <div id="p2" class="panel">
   <a class="card" href="/job-prep/简智机器人/01-公司与业务.html">
-    <div class="t">01 · 公司与业务</div>
-    <div class="d">基本盘 · 商业模式(卖什么给谁)· 无本体路线 · 数据飞轮 · 规模数字 · 公司所处阶段</div>
+    <span class="num">01</span>
+    <span class="body"><span class="t">公司与业务</span>
+    <span class="d">基本盘 · 商业模式(卖什么给谁)· 无本体路线 · 数据飞轮 · 规模数字 · 公司所处阶段</span></span>
   </a>
   <a class="card" href="/job-prep/简智机器人/02-产品与平台详解.html">
-    <div class="t">02 · 产品与平台详解</div>
-    <div class="d">Gen DAS / GenADP / Gen Matrix / DFM 全家桶 + 交付经理接触重点分级(每天碰 / 深度理解 / 了解即可)</div>
+    <span class="num">02</span>
+    <span class="body"><span class="t">产品与平台详解</span>
+    <span class="d">Gen DAS / GenADP / Gen Matrix / DFM 全家桶 + 交付经理接触重点分级(每天碰 / 深度理解 / 了解即可)</span></span>
   </a>
   <a class="card" href="/job-prep/简智机器人/03-数据流水线详解.html">
-    <div class="t">03 · 数据流水线详解</div>
-    <div class="d">采集→清洗→标注→质检→交付五环节超详细:目标/步骤/角色/难点/指标 + 全链路 KPI 体系</div>
-  </a>
-  <a class="card" href="/job-prep/简智机器人/09-核心概念串讲.html">
-    <span class="tag">概念速查</span>
-    <div class="t">09 · 核心概念串讲</div>
-    <div class="d">VLA / 世界模型 / CoT / 真值 / 时空同步 / 无本体 / 数据飞轮——每个概念:大白话定义→类比→和简智的关系→面试一句话</div>
-  </a>
-  <a class="card" href="/job-prep/简智机器人/08-客户与需求图谱.html">
-    <span class="tag">客户视角</span>
-    <div class="t">08 · 客户与需求图谱</div>
-    <div class="d">已公开客户(蚂蚁灵波/速腾聚创等)· 五类客户需求 · 七种项目形态 · 行业风险认知(反问弹药)</div>
+    <span class="num">03</span>
+    <span class="body"><span class="t">数据流水线详解</span>
+    <span class="d">采集→清洗→标注→质检→交付五环节超详细:目标/步骤/角色/难点/指标 + 全链路 KPI 体系</span></span>
   </a>
   <a class="card" href="/job-prep/简智机器人/06-交付物与客户训练详解.html">
-    <div class="t">06 · 交付物与客户训练详解</div>
-    <div class="d">交付给客户的 7 件套是什么 · 怎么交怎么验收 · 客户怎么用这些数据训机器人(模仿学习/VLA/世界模型)</div>
+    <span class="num">06</span>
+    <span class="body"><span class="t">交付物与客户训练详解</span>
+    <span class="d">交付给客户的 7 件套是什么 · 怎么交怎么验收 · 客户怎么用这些数据训机器人(模仿学习/VLA/世界模型)</span></span>
+  </a>
+  <a class="card" href="/job-prep/简智机器人/08-客户与需求图谱.html">
+    <span class="num">08</span>
+    <span class="body"><span class="t">客户与需求图谱</span>
+    <span class="d">已公开客户(蚂蚁灵波/速腾聚创等)· 五类客户需求 · 七种项目形态 · 行业风险认知(反问弹药)</span></span>
+  </a>
+  <a class="card" href="/job-prep/简智机器人/09-核心概念串讲.html">
+    <span class="num">09</span>
+    <span class="body"><span class="t">核心概念串讲 <span class="tag">概念速查</span></span>
+    <span class="d">VLA / 世界模型 / CoT / 真值 / 时空同步 / 无本体 / 数据飞轮——大白话定义→类比→面试一句话</span></span>
   </a>
 </div>
 
 <div id="p3" class="panel">
   <a class="card" href="/job-prep/README.html">
-    <div class="t">总览 · README</div>
-    <div class="d">投递状态一览 · 文档导航 · 我的定位一句话</div>
+    <span class="num">📖</span>
+    <span class="body"><span class="t">总览 · README</span>
+    <span class="d">投递状态一览 · 文档导航 · 我的定位一句话</span></span>
   </a>
   <a class="card" href="/job-prep/智谱/01-ToB交付深调研.html">
-    <div class="t">智谱 · ToB 交付深调研</div>
-    <div class="d">大模型应用交付项目经理岗位画像(已投递,备后续面试)</div>
+    <span class="num">📖</span>
+    <span class="body"><span class="t">智谱 · ToB 交付深调研</span>
+    <span class="d">大模型应用交付项目经理岗位画像(已投递,备后续面试)</span></span>
   </a>
   <a class="card" href="/job-prep/通用/行业通识与面试储备.html">
-    <div class="t">通用 · 行业通识与面试储备</div>
-    <div class="d">自动驾驶 / AI 交付行业通识提纲</div>
-  </a>
-  <a class="card" href="/job-prep/简智机器人/99-附录-客户项目经理岗(旧版).html">
-    <div class="t">附录 · 客户项目经理岗(旧版拆解)</div>
-    <div class="d">早期按"客户项目经理"岗位拆的版本,作对照</div>
+    <span class="num">📖</span>
+    <span class="body"><span class="t">通用 · 行业通识与面试储备</span>
+    <span class="d">自动驾驶 / AI 交付行业通识提纲</span></span>
   </a>
   <a class="card" href="/job-prep/简智机器人/98-附录-面试认知准备(旧版).html">
-    <div class="t">附录 · 面试认知准备(旧版)</div>
-    <div class="d">早期认知准备,含岗位薪资地点原始信息(30-60K·14薪·苏州相城)</div>
+    <span class="num">📖</span>
+    <span class="body"><span class="t">附录 · 面试认知准备(旧版)</span>
+    <span class="d">早期认知准备,含岗位薪资地点原始信息(30-60K·14薪·苏州相城)</span></span>
+  </a>
+  <a class="card" href="/job-prep/简智机器人/99-附录-客户项目经理岗(旧版).html">
+    <span class="num">📖</span>
+    <span class="body"><span class="t">附录 · 客户项目经理岗(旧版拆解)</span>
+    <span class="d">早期按"客户项目经理"岗位拆的版本,作对照</span></span>
   </a>
 </div>
 
-<div class="note">📱 手机直接用浏览器打开本网址即可,无需登录 · 简历文件未上网(仅本地保留)</div>
-<div class="foot">赵腾飞 · 求职准备中心 · 由 GitHub Pages 托管 · 更新 2026-09-05</div>
+<div class="foot">赵腾飞 · 求职准备中心 · 由 GitHub Pages 托管 · 简历未上网(仅本地)· 更新 2026-09-05</div>
 
 <script>
+function activate(hash){
+  const id = (hash || '#p1').replace('#','');
+  const btn = document.querySelector('.tab-btn[data-panel="'+id+'"]') || document.querySelector('.tab-btn');
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(btn.dataset.panel).classList.add('active');
+}
 document.querySelectorAll('.tab-btn').forEach(function(btn){
-  btn.addEventListener('click',function(){
-    document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active')});
-    document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active')});
-    btn.classList.add('active');
-    document.getElementById(btn.dataset.panel).classList.add('active');
-  });
+  btn.addEventListener('click',function(){ history.replaceState(null,'','#'+btn.dataset.panel); activate('#'+btn.dataset.panel); });
 });
+window.addEventListener('hashchange',()=>activate(location.hash));
+activate(location.hash);
 </script>
 </body>
 </html>
